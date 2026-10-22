@@ -1,0 +1,1019 @@
+<!-- Navigasi / Menu Navigasi Utama -->
+    <!-- ... existing layout code ... -->
+
+    <!-- HAPUS BAGIAN AI BAKER / BUAT ROTI IMPIAN ANDA -->
+
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Po&Co - Homemade Artisan Bakery</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Sacramento&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            warm: '#FBF8F3',
+                            beige: '#EFE3D3',
+                            accent: '#8C6239',
+                            dark: '#3A2818',
+                            terracotta: '#A65330',
+                            gold: '#C29B38',
+                            cream: '#FFFDF9',
+                            olive: '#555C41'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Cormorant Garamond"', 'serif'],
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        cursive: ['"Sacramento"', 'cursive'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-header {
+            background: rgba(251, 248, 243, 0.85);
+            backdrop-filter: blur(12px);
+        }
+        .hero-title-shadow {
+            text-shadow: 0px 4px 20px rgba(58, 40, 24, 0.15);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #FBF8F3;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #8C6239;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-brand-warm text-brand-dark font-sans antialiased selection:bg-brand-accent selection:text-white">
+
+    <!-- NAVIGATION BAR -->
+    <nav class="fixed top-0 left-0 right-0 z-50 glass-header border-b border-brand-beige/60 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Left Navigation Menu -->
+            <div class="hidden md:flex items-center space-x-8 text-xs uppercase tracking-widest font-semibold text-brand-dark/80">
+                <a href="#menu" class="hover:text-brand-terracotta transition-colors">Koleksi Menu</a>
+                <a href="#about" class="hover:text-brand-terracotta transition-colors">Tentang Kami</a>
+                <a href="#custom" class="hover:text-brand-terracotta transition-colors">Pesanan Khusus</a>
+            </div>
+
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-12 h-12 rounded-full border-2 border-brand-accent bg-brand-cream flex items-center justify-center p-1 shadow-sm group-hover:scale-105 transition-transform duration-300">
+                    <svg viewBox="0 0 100 100" class="w-full h-full text-brand-dark fill-current">
+                        <circle cx="50" cy="50" r="46" fill="none" stroke="#8C6239" stroke-width="2"/>
+                        <circle cx="50" cy="50" r="42" fill="none" stroke="#8C6239" stroke-width="1" stroke-dasharray="2 2"/>
+                        <path d="M 38 28 C 38 22, 62 22, 62 28 C 68 28, 68 38, 62 40 L 38 40 C 32 38, 32 28, 38 28 Z" fill="#8C6239"/>
+                        <text x="50" y="58" font-family="'Cormorant Garamond', serif" font-weight="bold" font-size="20" text-anchor="middle" fill="#3A2818">Po&Co</text>
+                        <text x="50" y="68" font-family="'Plus Jakarta Sans', sans-serif" font-size="8" text-anchor="middle" letter-spacing="1" fill="#8C6239">BAKERY</text>
+                    </svg>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-serif text-2xl font-bold tracking-wider leading-none text-brand-dark">Po&Co</span>
+                    <span class="text-[9px] uppercase tracking-[0.25em] text-brand-accent font-medium mt-0.5">Homemade Bakery</span>
+                </div>
+            </a>
+
+            <!-- Right Navigation & Cart -->
+            <div class="flex items-center space-x-6">
+                <div class="hidden lg:flex flex-col text-right">
+                    <span class="text-[10px] uppercase tracking-widest text-brand-accent font-bold">Jam Buka</span>
+                    <span class="text-xs font-semibold">Setiap Hari: 08.00 - 20.00</span>
+                </div>
+                
+                <!-- AI Assistant Trigger Button -->
+                <button onclick="toggleAiAssistantDrawer()" class="relative p-2.5 rounded-full bg-brand-accent text-white shadow-md hover:bg-brand-terracotta transition-all flex items-center justify-center gap-1.5 px-3.5 group">
+                    <i class="fa-solid fa-sparkles text-sm animate-pulse"></i>
+                    <span class="text-xs font-semibold uppercase tracking-wider hidden sm:inline">Tanya Baker AI</span>
+                </button>
+
+                <!-- Cart Button -->
+                <button id="cart-toggle-btn" onclick="toggleCartDrawer()" class="relative p-2.5 rounded-full bg-brand-cream border border-brand-beige shadow-sm hover:bg-brand-beige/50 transition-colors flex items-center justify-center">
+                    <i class="fa-solid fa-basket-shopping text-brand-dark text-lg"></i>
+                    <span id="cart-badge-count" class="absolute -top-1 -right-1 bg-brand-terracotta text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center border-2 border-white scale-0 transition-transform duration-300">0</span>
+                </button>
+
+                <a href="#menu" class="hidden sm:inline-flex px-5 py-2.5 rounded-full bg-brand-dark text-white text-xs font-semibold uppercase tracking-wider hover:bg-brand-terracotta transition-all duration-300 shadow-md hover:shadow-lg">
+                    Pesan Sekarang
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="relative min-h-screen pt-28 pb-16 flex items-center overflow-hidden bg-gradient-to-b from-brand-warm via-brand-beige/30 to-brand-warm">
+        <div class="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-brand-beige/40 blur-3xl pointer-events-none"></div>
+        <div class="absolute top-1/2 -left-32 w-80 h-80 rounded-full bg-brand-terracotta/10 blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-6 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-cream border border-brand-beige shadow-sm">
+                        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                        <span class="text-xs uppercase tracking-widest font-bold text-brand-accent">100% Homemade & Freshly Baked</span>
+                    </div>
+
+                    <h1 class="font-serif text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-brand-dark leading-[1.1] hero-title-shadow">
+                        Kehangatan Roti <br class="hidden sm:inline"/>
+                        <span class="italic font-normal font-serif text-brand-terracotta">Homemade</span> Sejati.
+                    </h1>
+
+                    <p class="text-base sm:text-lg text-brand-dark/75 max-w-xl mx-auto lg:mx-0 font-normal leading-relaxed">
+                        Dibuat secara artisanal setiap pagi menggunakan mentega murni pilihan, tanpa bahan pengawet. Nikmati kelembutan tekstur khas racikan resep rahasia Bu Ponco.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+                        <a href="#menu" class="w-full sm:w-auto px-8 py-4 rounded-full bg-brand-dark text-white text-sm font-semibold uppercase tracking-wider hover:bg-brand-terracotta transition-all duration-300 shadow-xl hover:shadow-2xl flex items-center justify-center gap-3 group">
+                            <span>Jelajahi Menu</span>
+                            <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                        <a href="#about" class="w-full sm:w-auto px-8 py-4 rounded-full bg-transparent border border-brand-dark/30 text-brand-dark text-sm font-semibold uppercase tracking-wider hover:bg-brand-beige/50 transition-all duration-300 flex items-center justify-center">
+                            Cerita Kami
+                        </a>
+                    </div>
+
+                    <div class="pt-8 grid grid-cols-3 gap-4 border-t border-brand-beige/80 max-w-lg mx-auto lg:mx-0">
+                        <div>
+                            <p class="font-serif text-2xl sm:text-3xl font-bold text-brand-dark">100%</p>
+                            <p class="text-[11px] uppercase tracking-wider text-brand-accent font-medium">Bahan Alami</p>
+                        </div>
+                        <div>
+                            <p class="font-serif text-2xl sm:text-3xl font-bold text-brand-dark">4.9/5.0</p>
+                            <p class="text-[11px] uppercase tracking-wider text-brand-accent font-medium">Rating Kepuasan</p>
+                        </div>
+                        <div>
+                            <p class="font-serif text-2xl sm:text-3xl font-bold text-brand-dark">Fresh</p>
+                            <p class="text-[11px] uppercase tracking-wider text-brand-accent font-medium">Dipanggang Harian</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-6 relative">
+                    <div class="relative mx-auto max-w-md lg:max-w-none">
+                        <div class="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-brand-cream aspect-[4/3] sm:aspect-[1/1] lg:aspect-[4/3]">
+                            <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=1200&q=80" alt="Fresh Artisan Bread Po&Co" class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700">
+                            
+                            <div class="absolute bottom-6 left-6 right-6 bg-brand-dark/80 backdrop-blur-md p-4 rounded-2xl border border-white/20 text-white flex items-center justify-between">
+                                <div>
+                                    <p class="font-serif italic text-lg text-brand-beige">Signature Croissant & Pastry</p>
+                                    <p class="text-xs text-white/70">Aroma harum mentega dalam setiap gigitan</p>
+                                </div>
+                                <span class="bg-brand-terracotta text-white text-xs px-3 py-1.5 rounded-full font-semibold">Best Seller</span>
+                            </div>
+                        </div>
+
+                        <div class="absolute -top-6 -right-6 bg-brand-cream border-2 border-brand-beige p-4 rounded-full shadow-lg hidden sm:flex items-center justify-center w-28 h-28 text-center rotate-12">
+                            <span class="font-serif text-xs font-bold uppercase tracking-wider text-brand-dark">Fresh From <br/><span class="text-brand-terracotta">Oven</span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PHILOSOPHY SECTION -->
+    <section id="about" class="py-20 bg-brand-cream border-y border-brand-beige">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-5 space-y-6">
+                    <span class="text-xs uppercase tracking-[0.2em] font-bold text-brand-accent">Filosofi Dapur Kami</span>
+                    <h2 class="font-serif text-4xl sm:text-5xl font-bold text-brand-dark leading-tight">
+                        Dibuat Dengan Rasa, <br/>
+                        <span class="italic font-normal text-brand-terracotta">Disajikan Dengan Cinta.</span>
+                    </h2>
+                    <p class="text-brand-dark/80 text-sm sm:text-base leading-relaxed">
+                        Di Po&Co, kami percaya bahwa roti terbaik lahir dari kesabaran. Proses *fermentasi perlahan* dan pemilihan bahan premium alami tanpa pengawet sintesis memberikan rasa gurih alami yang otentik.
+                    </p>
+                    <div class="pt-2 flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-brand-beige/50 flex items-center justify-center text-brand-terracotta text-xl font-serif italic">
+                            Po
+                        </div>
+                        <div>
+                            <p class="font-serif font-bold text-base text-brand-dark">Tim Baker Po&Co</p>
+                            <p class="text-xs text-brand-accent">Artisan Baker & Founder</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div class="rounded-2xl overflow-hidden shadow-md bg-brand-warm p-6 border border-brand-beige flex flex-col justify-between">
+                        <i class="fa-solid fa-wheat-awn text-3xl text-brand-accent mb-4"></i>
+                        <h3 class="font-serif text-2xl font-bold text-brand-dark mb-2">Tepung Unbleached Premium</h3>
+                        <p class="text-xs text-brand-dark/70 leading-relaxed">Menggunakan tepung berkualitas tinggi tanpa pemutih buatan demi menjaga nutrisi alami.</p>
+                    </div>
+
+                    <div class="rounded-2xl overflow-hidden shadow-md bg-brand-dark text-white p-6 flex flex-col justify-between">
+                        <i class="fa-solid fa-fire-burner text-3xl text-brand-beige mb-4"></i>
+                        <h3 class="font-serif text-2xl font-bold text-brand-beige mb-2">Panggangan Segar Setiap Hari</h3>
+                        <p class="text-xs text-white/70 leading-relaxed">Semua pesanan dipanggang di hari yang sama untuk memastikan kerenyahan & kelembutan maksimal.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRODUCT COLLECTION SECTION -->
+    <section id="menu" class="py-24 bg-brand-warm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 border-b border-brand-beige pb-6">
+                <div>
+                    <span class="text-xs uppercase tracking-[0.25em] font-bold text-brand-accent">Menu Andalan</span>
+                    <h2 class="font-serif text-4xl sm:text-5xl font-bold text-brand-dark mt-2">Koleksi Roti & Pastry</h2>
+                </div>
+                <p class="text-xs sm:text-sm text-brand-dark/70 max-w-md mt-4 md:mt-0">
+                    Klik <strong class="text-brand-terracotta">+ Tambah</strong> untuk menambahkan ke keranjang belanja Anda. Pesanan dapat dikonfirmasi langsung via WhatsApp.
+                </p>
+            </div>
+
+            <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Products dynamically rendered from PRODUCTS_DATA -->
+            </div>
+        </div>
+    </section>
+
+    <!-- SEASONAL SPECIAL BANNER -->
+    <section class="py-16 bg-brand-dark text-white relative overflow-hidden my-12">
+        <div class="absolute inset-0 opacity-20 bg-[url('https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=1200&q=80')] bg-cover bg-center"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <div class="lg:col-span-8 space-y-4 text-center lg:text-left">
+                    <span class="text-xs font-bold uppercase tracking-[0.2em] text-brand-beige">Edisi Spesial Minggu Ini</span>
+                    <h2 class="font-serif text-4xl sm:text-5xl font-bold leading-tight">
+                        Paket Hantaran & Gathering Box Po&Co
+                    </h2>
+                    <p class="text-white/80 text-sm sm:text-base max-w-2xl">
+                        Ingin memberikan hadiah istimewa untuk kolega, keluarga, atau acara spesial? Kami menyediakan *Custom Gift Box* dengan kombinasi roti & hampers eksklusif.
+                    </p>
+                </div>
+                <div class="lg:col-span-4 flex justify-center lg:justify-end">
+                    <a href="#custom" class="px-8 py-4 rounded-full bg-brand-beige text-brand-dark font-semibold text-xs uppercase tracking-wider hover:bg-white transition-all shadow-lg">
+                        Konsultasi Hampers
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BUAT ROTI IMPIAN ANDA (GEMINI AI SECTION) -->
+    <section id="custom-creator" class="py-20 bg-brand-warm relative overflow-hidden">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-brand-cream border border-brand-beige/80 rounded-3xl p-8 sm:p-12 shadow-xl relative z-10 text-center">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-beige/50 text-[10px] uppercase font-bold tracking-widest text-brand-accent mb-4">
+                    <i class="fa-solid fa-sparkles text-brand-terracotta"></i> POWERED BY GEMINI AI
+                </div>
+                
+                <h2 class="font-serif text-3xl sm:text-5xl font-bold text-brand-dark mb-3">
+                    Buat Roti Impian Anda
+                </h2>
+                <p class="text-xs sm:text-sm text-brand-dark/75 max-w-xl mx-auto mb-8 leading-relaxed">
+                    Beri tahu kami kombinasi rasa, selera, atau acara spesial Anda. AI Baker kami akan meracik ide resep khusus beserta perkiraan estimasi harganya!
+                </p>
+
+                <div class="bg-brand-warm/60 border border-brand-beige rounded-2xl p-6 shadow-inner text-left max-w-2xl mx-auto">
+                    <label for="custom-bread-input" class="block font-serif text-base font-bold text-brand-dark mb-2">
+                        Sebutkan bahan favorit atau konsep kreasi Anda:
+                    </label>
+                    
+                    <div class="flex flex-col sm:flex-row gap-3">
+                        <input type="text" id="custom-bread-input" onkeydown="if(event.key==='Enter') generateCustomBreadRecipe()" placeholder="Contoh: Roti sourdough rasa matcha dengan isian cream cheese lemon dan kacang..." class="flex-1 px-4 py-3.5 rounded-xl bg-white border border-brand-beige focus:outline-none focus:ring-2 focus:ring-brand-accent text-xs text-brand-dark shadow-sm">
+                        
+                        <button onclick="generateCustomBreadRecipe()" id="btn-racik-resep" class="px-6 py-3.5 rounded-xl bg-brand-dark text-white font-bold text-xs uppercase tracking-wider hover:bg-brand-terracotta transition-all shadow-md flex items-center justify-center gap-2 shrink-0">
+                            <i class="fa-solid fa-wand-magic-sparkles"></i>
+                            <span>Racik Resep</span>
+                        </button>
+                    </div>
+
+                    <div class="mt-4 flex flex-wrap items-center gap-2 text-[11px] text-brand-dark/60">
+                        <span class="font-semibold text-brand-accent">Inspirasi cepat:</span>
+                        <button onclick="setInputPrompt('Pandan Cheese Gluten-Free')" class="px-3 py-1 rounded-full bg-brand-cream border border-brand-beige hover:bg-brand-beige transition-colors text-brand-dark">Pandan Cheese Gluten-Free</button>
+                        <button onclick="setInputPrompt('Truffle Savory Croissant')" class="px-3 py-1 rounded-full bg-brand-cream border border-brand-beige hover:bg-brand-beige transition-colors text-brand-dark">Truffle Savory Croissant</button>
+                        <button onclick="setInputPrompt('Healthy Oat Brioche Berry')" class="px-3 py-1 rounded-full bg-brand-cream border border-brand-beige hover:bg-brand-beige transition-colors text-brand-dark">Healthy Oat Brioche</button>
+                    </div>
+                </div>
+
+                <!-- Hasil Kreasi AI -->
+                <div id="ai-recipe-result" class="hidden mt-8 text-left bg-white rounded-2xl p-6 sm:p-8 border border-brand-accent/30 shadow-lg relative overflow-hidden transition-all">
+                    <div class="flex items-center justify-between border-b border-brand-beige pb-4 mb-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-brand-terracotta/10 flex items-center justify-center text-brand-terracotta font-bold text-lg">
+                                <i class="fa-solid fa-wheat-awt"></i>
+                            </div>
+                            <div>
+                                <h3 id="recipe-title" class="font-serif text-2xl font-bold text-brand-dark">Nama Resep Custom</h3>
+                                <p id="recipe-category" class="text-[10px] uppercase tracking-widest font-bold text-brand-accent">Kategori Roti</p>
+                            </div>
+                        </div>
+                        <span id="recipe-price" class="font-serif text-xl sm:text-2xl font-bold text-brand-terracotta bg-brand-warm px-4 py-2 rounded-xl border border-brand-beige">Rp 0</span>
+                    </div>
+
+                    <div class="space-y-4 text-xs leading-relaxed text-brand-dark/80">
+                        <div>
+                            <h4 class="font-bold text-brand-dark uppercase tracking-wider text-[11px] mb-1"><i class="fa-solid fa-align-left text-brand-accent mr-1"></i> Deskripsi Rasa & Keunikan:</h4>
+                            <p id="recipe-description" class="italic bg-brand-warm/30 p-3 rounded-lg border border-brand-beige/50">Deskripsi kreasi rasa roti...</p>
+                        </div>
+
+                        <div>
+                            <h4 class="font-bold text-brand-dark uppercase tracking-wider text-[11px] mb-1"><i class="fa-solid fa-list-check text-brand-accent mr-1"></i> Bahan Utama & Racikan:</h4>
+                            <ul id="recipe-ingredients" class="grid grid-cols-1 sm:grid-cols-2 gap-2 pl-4 list-disc text-brand-dark/90"></ul>
+                        </div>
+
+                        <div>
+                            <h4 class="font-bold text-brand-dark uppercase tracking-wider text-[11px] mb-1"><i class="fa-solid fa-mug-hot text-brand-accent mr-1"></i> Saran Penyajian & Pairing:</h4>
+                            <p id="recipe-pairing" class="text-brand-dark/80">Saran minuman/suasana terbaik...</p>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 pt-4 border-t border-brand-beige flex flex-col sm:flex-row items-center justify-between gap-4">
+                        <p class="text-[10px] text-brand-dark/60">Suka dengan resep racikan AI ini? Pesan langsung untuk dibuatkan khusus!</p>
+                        <button id="btn-order-custom-wa" onclick="orderCustomBreadToWA()" class="w-full sm:w-auto px-6 py-3 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs uppercase tracking-wider transition-colors shadow-md flex items-center justify-center gap-2">
+                            <i class="fa-brands fa-whatsapp text-sm"></i>
+                            <span>Pesan Kreasi Ini Via WA</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Loading Spinner -->
+                <div id="ai-recipe-loading" class="hidden mt-8 p-8 text-center bg-white/80 rounded-2xl border border-brand-beige">
+                    <i class="fa-solid fa-circle-notch animate-spin text-3xl text-brand-terracotta mb-3"></i>
+                    <p class="font-serif text-lg font-bold text-brand-dark">Sedang Meracik Resep Impian Anda...</p>
+                    <p class="text-xs text-brand-dark/60 mt-1">AI Baker sedang memadukan aroma, rasa, dan struktur tekstur roti terbaik.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CUSTOM ORDER & CONTACT -->
+    <section id="custom" class="py-20 bg-brand-cream">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-brand-warm rounded-3xl p-8 sm:p-12 border border-brand-beige shadow-xl grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <div class="lg:col-span-7 space-y-6">
+                    <span class="text-xs uppercase tracking-widest font-bold text-brand-accent">Pesanan Khusus & Event</span>
+                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-brand-dark">
+                        Momen Spesial Anda Bersama Kelembutan Roti Po&Co
+                    </h2>
+                    <p class="text-sm text-brand-dark/75 leading-relaxed">
+                        Kami melayani pemesanan untuk acara ulang tahun, rapat kantor, arisan, hingga hantaran pernikahan. Hubungi tim customer service kami untuk mendapatkan penawaran spesial.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 pt-2">
+                        <a id="direct-wa-btn" href="https://wa.me/6281228459635?text=Halo%20Po%26Co%20Bakery,%20saya%20ingin%20bertanya%20mengenai%20pesanan%20khusus/event." target="_blank" class="px-6 py-3.5 rounded-full bg-emerald-600 text-white font-semibold text-xs uppercase tracking-wider hover:bg-emerald-700 transition-colors flex items-center justify-center gap-2 shadow-md">
+                            <i class="fa-brands fa-whatsapp text-base"></i>
+                            <span>Chat Admin WA</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="relative w-full max-w-sm rounded-2xl overflow-hidden border-4 border-white shadow-lg">
+                        <img src="https://images.unsplash.com/photo-1517433670267-08bbd4be890f?auto=format&fit=crop&w=800&q=80" alt="Po&Co Custom Event" class="w-full h-64 object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/70 to-transparent flex items-end p-6 text-white">
+                            <p class="font-serif italic text-sm">"Setiap detail diracik dengan dedikasi tinggi."</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-brand-dark text-brand-beige py-16 border-t border-brand-dark/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 pb-12 border-b border-brand-beige/10">
+                <div class="md:col-span-5 space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full border border-brand-beige/40 bg-brand-cream/10 flex items-center justify-center p-1">
+                            <svg viewBox="0 0 100 100" class="w-full h-full text-brand-beige fill-current">
+                                <circle cx="50" cy="50" r="44" fill="none" stroke="#EFE3D3" stroke-width="2"/>
+                                <text x="50" y="58" font-family="'Cormorant Garamond', serif" font-weight="bold" font-size="22" text-anchor="middle" fill="#EFE3D3">Po&Co</text>
+                            </svg>
+                        </div>
+                        <span class="font-serif text-2xl font-bold text-white">Po&Co</span>
+                    </div>
+                    <p class="text-xs text-brand-beige/70 max-w-sm leading-relaxed">
+                        Nikmati sensasi kelembutan roti homemade artisan harian yang dibuat dari bahan-bahan organik dan alami terbaik.
+                    </p>
+                </div>
+
+                <div class="md:col-span-3 space-y-3">
+                    <h4 class="text-xs font-bold uppercase tracking-widest text-white">Navigasi</h4>
+                    <ul class="space-y-2 text-xs text-brand-beige/70">
+                        <li><a href="#menu" class="hover:text-white transition-colors">Menu Roti</a></li>
+                        <li><a href="#about" class="hover:text-white transition-colors">Filosofi Dapur</a></li>
+                        <li><a href="#custom" class="hover:text-white transition-colors">Pesanan Event</a></li>
+                    </ul>
+                </div>
+
+                <div class="md:col-span-4 space-y-3">
+                    <h4 class="text-xs font-bold uppercase tracking-widest text-white">Hubungi Kami</h4>
+                    <p class="text-xs text-brand-beige/70">Jl. Suka Roti No. 88, Kota Anda</p>
+                    <p class="text-xs text-brand-beige/70">WhatsApp: +62 812-2845-9635</p>
+                    <div class="flex space-x-4 pt-2">
+                        <a href="#" class="w-8 h-8 rounded-full bg-brand-beige/10 flex items-center justify-center text-xs hover:bg-brand-terracotta transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="w-8 h-8 rounded-full bg-brand-beige/10 flex items-center justify-center text-xs hover:bg-brand-terracotta transition-colors"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="w-8 h-8 rounded-full bg-brand-beige/10 flex items-center justify-center text-xs hover:bg-brand-terracotta transition-colors"><i class="fa-brands fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-[11px] text-brand-beige/50">
+                <p>&copy; 2026 Po&Co Bakery. Hak Cipta Dilindungi.</p>
+                <p class="mt-2 sm:mt-0 font-serif italic">Rasa Menentukan Kualitas.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- CART DRAWER -->
+    <div id="cart-drawer-overlay" onclick="toggleCartDrawer()" class="fixed inset-0 bg-black/50 z-50 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300"></div>
+    <div id="cart-drawer" class="fixed top-0 right-0 bottom-0 w-full max-w-md bg-brand-warm z-50 shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col">
+        <div class="p-6 border-b border-brand-beige bg-brand-cream flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <i class="fa-solid fa-basket-shopping text-brand-terracotta"></i>
+                <h3 class="font-serif text-xl font-bold text-brand-dark">Keranjang Belanja</h3>
+            </div>
+            <button onclick="toggleCartDrawer()" class="w-8 h-8 rounded-full hover:bg-brand-beige flex items-center justify-center text-brand-dark transition-colors">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+
+        <div id="cart-items-container" class="flex-1 overflow-y-auto p-6 space-y-4 custom-scrollbar"></div>
+
+        <div class="p-6 border-t border-brand-beige bg-brand-cream space-y-4">
+            <div class="flex justify-between items-center text-sm font-semibold">
+                <span class="text-brand-dark/70">Total Pembelian:</span>
+                <span id="cart-total-price" class="font-serif text-2xl font-bold text-brand-dark">Rp 0</span>
+            </div>
+            <button onclick="checkoutToWhatsApp()" class="w-full py-4 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs uppercase tracking-wider transition-colors shadow-lg flex items-center justify-center gap-2">
+                <i class="fa-brands fa-whatsapp text-lg"></i>
+                <span>Pesan Sekarang via WA</span>
+            </button>
+            <p class="text-[10px] text-center text-brand-dark/50">Pesanan akan langsung dikirimkan ke WhatsApp resmi Po&Co.</p>
+        </div>
+    </div>
+
+    <!-- AI ASSISTANT DRAWER -->
+    <div id="ai-drawer-overlay" onclick="toggleAiAssistantDrawer()" class="fixed inset-0 bg-black/50 z-50 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300"></div>
+    <div id="ai-drawer" class="fixed top-0 right-0 bottom-0 w-full max-w-md bg-brand-warm z-50 shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col">
+        <div class="p-6 border-b border-brand-beige bg-brand-dark text-white flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-brand-terracotta flex items-center justify-center text-white">
+                    <i class="fa-solid fa-sparkles"></i>
+                </div>
+                <div>
+                    <h3 class="font-serif text-lg font-bold text-brand-beige">Po&Co AI Baker Assistant</h3>
+                    <p class="text-[10px] text-brand-beige/70 uppercase tracking-widest">Konsultan Roti & Pairings</p>
+                </div>
+            </div>
+            <button onclick="toggleAiAssistantDrawer()" class="w-8 h-8 rounded-full hover:bg-white/10 flex items-center justify-center text-white transition-colors">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+
+        <div id="ai-chat-container" class="flex-1 overflow-y-auto p-6 space-y-4 custom-scrollbar bg-brand-cream/50">
+            <div class="flex items-start gap-3">
+                <div class="w-8 h-8 rounded-full bg-brand-terracotta flex items-center justify-center text-white text-xs shrink-0 mt-1">
+                    <i class="fa-solid fa-robot"></i>
+                </div>
+                <div class="bg-brand-cream p-4 rounded-2xl rounded-tl-none border border-brand-beige text-xs text-brand-dark leading-relaxed shadow-sm">
+                    Halo! Saya Baker AI dari **Po&Co Bakery**. Bingung memilih roti untuk sarapan, kopi, atau hantaran acara? Tanyakan apa saja kepada saya!
+                </div>
+            </div>
+        </div>
+
+        <div class="px-6 py-2 bg-brand-cream border-t border-brand-beige/60 flex items-center gap-2 overflow-x-auto text-[11px] whitespace-nowrap custom-scrollbar">
+            <span class="text-brand-accent font-semibold">Tanya:</span>
+            <button onclick="sendQuickAiQuery('Roti mana yang paling cocok diminum dengan Kopi Latte?')" class="px-2.5 py-1 rounded-full bg-brand-warm border border-brand-beige hover:bg-brand-beige text-brand-dark transition-colors">Pairing Kopi Latte</button>
+            <button onclick="sendQuickAiQuery('Apakah ada opsi roti sehat atau low sugar?')" class="px-2.5 py-1 rounded-full bg-brand-warm border border-brand-beige hover:bg-brand-beige text-brand-dark transition-colors">Roti Sehat / Low Sugar</button>
+            <button onclick="sendQuickAiQuery('Rekomendasi paket hantaran arisan untuk 10 orang.')" class="px-2.5 py-1 rounded-full bg-brand-warm border border-brand-beige hover:bg-brand-beige text-brand-dark transition-colors">Hantaran Arisan</button>
+        </div>
+
+        <div class="p-4 border-t border-brand-beige bg-brand-cream flex gap-2">
+            <input type="text" id="ai-chat-input" onkeydown="if(event.key==='Enter') sendAiChatMessage()" placeholder="Ketik pertanyaan seputar roti..." class="flex-1 px-4 py-3 rounded-full bg-brand-warm border border-brand-beige focus:outline-none focus:ring-2 focus:ring-brand-accent text-xs text-brand-dark">
+            <button onclick="sendAiChatMessage()" id="btn-send-chat" class="w-11 h-11 rounded-full bg-brand-dark text-white flex items-center justify-center hover:bg-brand-terracotta transition-colors shadow-md shrink-0">
+                <i class="fa-solid fa-paper-plane text-xs"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC & PRODUCT DATA -->
+    <script>
+        // =========================================================================
+        // DATA PRODUK PO&CO (TAMBAHKAN MENU BARU DI SINI)
+        // =========================================================================
+        const PRODUCTS_DATA = [
+            {
+                id: 'p1',
+                name: 'Lapis Legit',
+                category: 'Signature Pastry',
+                price: 500000,
+                unit: 'Loyang',
+                image: 'https://i.postimg.cc/bJtF8yk4/Foto-Katalog-Lapis-Legit.png',
+                description: 'Lapis renyah luar dengan aroma mentega murni Prancis yang kaya.'
+            },
+            {
+                id: 'p2',
+                name: 'Marmer Cake',
+                category: 'Artisan Loaf',
+                price: 200000,
+                unit: 'Loyang',
+                image: 'https://i.postimg.cc/ns4yLpjK/Foto-Katalog-Marmer-Cake.png',
+                description: 'Roti tawar lembut kapas dengan metode fermentasi alami 18 jam.'
+            },
+            {
+                id: 'p3',
+                name: 'Roti Sarang Semut',
+                category: 'Sweet Bread',
+                price: 150000,
+                unit: 'Pcs',
+                image: 'https://i.postimg.cc/hhTdPYMw/Foto-Katalog-Sarang-Semut.png',
+                description: 'Isian cokelat Belgian leleh yang manisnya pas dan tidak bikin enek.'
+            },
+            {
+                id: 'p4',
+                name: 'Nastar Wijsman',
+                category: 'Savory Special',
+                price: 30000,
+                unit: 'Pcs',
+                image: 'https://i.postimg.cc/XXfbvKF6/Foto-Katalog-Nastar.png',
+                description: 'Aroma bawang panggang gurih dipadu cream cheese lembut melimpah.'
+            },
+            {
+                id: 'p5',
+                name: 'Cinnamon Roll Glaze',
+                category: 'Sweet Pastry',
+                price: 25000,
+                unit: 'Pcs',
+                image: 'https://images.unsplash.com/photo-1509365465985-25d11c17e812?auto=format&fit=crop&w=600&q=80',
+                description: 'Kayu manis Ceylon beraroma hangat dengan lelehan icing sugar vanila.'
+            },
+            {
+                id: 'p6',
+                name: 'Almond Flaked Croissant',
+                category: 'Signature Pastry',
+                price: 32000,
+                unit: 'Pcs',
+                image: 'https://images.unsplash.com/photo-1530610476181-d83430b64dcd?auto=format&fit=crop&w=600&q=80',
+                description: 'Topping irisan almond renyah dengan isian krim almond homemade.'
+            },
+            // MENU BARU TAMBAHAN:
+            {
+                id: 'p7',
+                name: 'Uji Matcha Cream Bun',
+                category: 'Sweet Specialty',
+                price: 27000,
+                unit: 'Pcs',
+                image: 'https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?auto=format&fit=crop&w=600&q=80',
+                description: 'Roti lembut berisikan krim Matcha khas Uji Kyoto yang kaya dan otentik.'
+            },
+            {
+                id: 'p8',
+                name: 'Smoked Beef & Cheddar Danish',
+                category: 'Savory Pastry',
+                price: 33000,
+                unit: 'Pcs',
+                image: 'https://images.unsplash.com/photo-1621236378699-8597faf6a176?auto=format&fit=crop&w=600&q=80',
+                description: 'Pastry berlapis renyah berisi smoked beef gurih dan keju cheddar panggang.'
+            },
+            {
+                id: 'p9',
+                name: 'Pandan Coconut Sourdough',
+                category: 'Artisan Loaf',
+                price: 38000,
+                unit: 'Loaf',
+                image: 'https://images.unsplash.com/photo-1589367920969-ab8e050bbb04?auto=format&fit=crop&w=600&q=80',
+                description: 'Perpaduan aroma pandan daun alami dengan parutan kelapa manis gurih.'
+            }
+        ];
+
+        // Nomor WhatsApp Admin
+        const ADMIN_WHATSAPP_NUMBER = "6281228459635";
+
+        // Global State
+        let cart = [];
+        let lastCustomRecipe = null;
+
+        // Gemini AI Helper
+        async function callGeminiAPI(payload) {
+            const apiKey = "";
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
+
+            let retries = 3;
+            let delay = 1000;
+
+            while (retries > 0) {
+                try {
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                    if (!response.ok) throw new Error(`HTTP Error ${response.status}`);
+                    return await response.json();
+                } catch (err) {
+                    retries--;
+                    if (retries === 0) throw err;
+                    await new Promise(r => setTimeout(r, delay));
+                    delay *= 2;
+                }
+            }
+        }
+
+        // Helper Set Prompt
+        function setInputPrompt(text) {
+            document.getElementById('custom-bread-input').value = text;
+            generateCustomBreadRecipe();
+        }
+
+        // Generate Custom Bread Recipe via Gemini API structured JSON
+        async function generateCustomBreadRecipe() {
+            const inputEl = document.getElementById('custom-bread-input');
+            const promptText = inputEl.value.trim();
+            if (!promptText) return;
+
+            const btnRacik = document.getElementById('btn-racik-resep');
+            const loadingBox = document.getElementById('ai-recipe-loading');
+            const resultBox = document.getElementById('ai-recipe-result');
+
+            btnRacik.disabled = true;
+            resultBox.classList.add('hidden');
+            loadingBox.classList.remove('hidden');
+
+            try {
+                const systemPrompt = "Anda adalah Head Artisan Baker Po&Co Bakery. Buatlah konsep resep roti unik kustom berdasarkan permintaan pelanggan dalam format JSON terstruktur.";
+
+                const payload = {
+                    contents: [{ parts: [{ text: `Racik resep roti kustom berdasarkan keinginan ini: "${promptText}"` }] }],
+                    systemInstruction: { parts: [{ text: systemPrompt }] },
+                    generationConfig: {
+                        responseMimeType: "application/json",
+                        responseSchema: {
+                            type: "OBJECT",
+                            properties: {
+                                title: { type: "STRING" },
+                                category: { type: "STRING" },
+                                estimatedPrice: { type: "NUMBER" },
+                                description: { type: "STRING" },
+                                ingredients: {
+                                    type: "ARRAY",
+                                    items: { type: "STRING" }
+                                },
+                                pairingSuggestion: { type: "STRING" }
+                            },
+                            propertyOrdering: ["title", "category", "estimatedPrice", "description", "ingredients", "pairingSuggestion"]
+                        }
+                    }
+                };
+
+                const responseData = await callGeminiAPI(payload);
+                const jsonText = responseData?.candidates?.[0]?.content?.parts?.[0]?.text;
+                
+                if (!jsonText) throw new Error("Respons kosong dari Gemini AI");
+                
+                const recipe = JSON.parse(jsonText);
+                lastCustomRecipe = recipe;
+
+                // Display Result
+                document.getElementById('recipe-title').innerText = recipe.title || "Roti Impian Kustom";
+                document.getElementById('recipe-category').innerText = recipe.category || "Artisan Custom";
+                document.getElementById('recipe-price').innerText = formatRupiah(recipe.estimatedPrice || 45000);
+                document.getElementById('recipe-description').innerText = `"${recipe.description}"`;
+                
+                const ingContainer = document.getElementById('recipe-ingredients');
+                ingContainer.innerHTML = (recipe.ingredients || []).map(ing => `<li>${ing}</li>`).join('');
+
+                document.getElementById('recipe-pairing').innerText = recipe.pairingSuggestion || "Cocok dinikmati hangat bersama kopi hitam atau teh artisan.";
+
+                loadingBox.classList.add('hidden');
+                resultBox.classList.remove('hidden');
+
+            } catch (err) {
+                console.error(err);
+                alert("Maaf, gagal meracik resep saat ini. Silakan coba beberapa saat lagi!");
+                loadingBox.classList.add('hidden');
+            } finally {
+                btnRacik.disabled = false;
+            }
+        }
+
+        // Send Custom Bread Order directly to WhatsApp
+        function orderCustomBreadToWA() {
+            if (!lastCustomRecipe) return;
+
+            let msg = `Halo Po&Co Bakery, saya ingin memesan *Roti Impian Custom* racikan AI Gemini dengan rincian berikut:\n\n`;
+            msg += `🍞 *Nama Kreasi:* ${lastCustomRecipe.title}\n`;
+            msg += `🏷️ *Kategori:* ${lastCustomRecipe.category}\n`;
+            msg += `💰 *Estimasi Harga:* ${formatRupiah(lastCustomRecipe.estimatedPrice)}\n\n`;
+            msg += `✨ *Deskripsi Rasa:* ${lastCustomRecipe.description}\n\n`;
+            msg += `📝 *Bahan Utama:* ${(lastCustomRecipe.ingredients || []).join(', ')}\n\n`;
+            msg += `Mohon info ketersediaan slot pemesanan kustom dan estimasi pengirimannya. Terima kasih!`;
+
+            const encoded = encodeURIComponent(msg);
+            window.open(`https://wa.me/${ADMIN_WHATSAPP_NUMBER}?text=${encoded}`, '_blank');
+        }
+
+        // Format Currency Helper
+        function formatRupiah(amount) {
+            return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format(amount);
+        }
+
+        // Toggle AI Drawer
+        function toggleAiAssistantDrawer() {
+            const drawer = document.getElementById('ai-drawer');
+            const overlay = document.getElementById('ai-drawer-overlay');
+            const isOpen = !drawer.classList.contains('translate-x-full');
+
+            if (isOpen) {
+                drawer.classList.add('translate-x-full');
+                overlay.classList.add('opacity-0', 'pointer-events-none');
+                overlay.classList.remove('opacity-100');
+            } else {
+                drawer.classList.remove('translate-x-full');
+                overlay.classList.remove('opacity-0', 'pointer-events-none');
+                overlay.classList.add('opacity-100');
+            }
+        }
+
+        function sendQuickAiQuery(text) {
+            document.getElementById('ai-chat-input').value = text;
+            sendAiChatMessage();
+        }
+
+        async function sendAiChatMessage() {
+            const inputEl = document.getElementById('ai-chat-input');
+            const query = inputEl.value.trim();
+            if (!query) return;
+
+            const chatContainer = document.getElementById('ai-chat-container');
+            const btnSend = document.getElementById('btn-send-chat');
+
+            chatContainer.innerHTML += `
+                <div class="flex items-start justify-end gap-3">
+                    <div class="bg-brand-dark text-white p-4 rounded-2xl rounded-tr-none text-xs leading-relaxed max-w-[80%] shadow-sm">
+                        ${query}
+                    </div>
+                </div>
+            `;
+            inputEl.value = '';
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+
+            const loadingId = 'ai-loading-' + Date.now();
+            chatContainer.innerHTML += `
+                <div id="${loadingId}" class="flex items-start gap-3">
+                    <div class="w-8 h-8 rounded-full bg-brand-terracotta flex items-center justify-center text-white text-xs shrink-0 mt-1">
+                        <i class="fa-solid fa-robot"></i>
+                    </div>
+                    <div class="bg-brand-cream p-4 rounded-2xl rounded-tl-none border border-brand-beige text-xs text-brand-dark/60 flex items-center gap-2">
+                        <i class="fa-solid fa-spinner animate-spin"></i> Baker AI sedang meracik jawaban...
+                    </div>
+                </div>
+            `;
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+            btnSend.disabled = true;
+
+            try {
+                const systemPrompt = `Anda adalah Baker AI resmi dari Po&Co Bakery.
+Menu utama kami:
+${JSON.stringify(PRODUCTS_DATA, null, 2)}
+Tugas Anda membantu pelanggan memilih roti, rekomendasi pairing kopi/teh, bahan & kualitas, serta konsultasi pesanan acara. Jawab ramah dan berwawasan Bahasa Indonesia.`;
+
+                const payload = {
+                    contents: [{ parts: [{ text: query }] }],
+                    systemInstruction: { parts: [{ text: systemPrompt }] }
+                };
+
+                const data = await callGeminiAPI(payload);
+                const replyText = data?.candidates?.[0]?.content?.parts?.[0]?.text || "Maaf, terjadi kendala pada sistem Baker AI. Silakan tanyakan kembali!";
+
+                document.getElementById(loadingId).remove();
+                chatContainer.innerHTML += `
+                    <div class="flex items-start gap-3">
+                        <div class="w-8 h-8 rounded-full bg-brand-terracotta flex items-center justify-center text-white text-xs shrink-0 mt-1">
+                            <i class="fa-solid fa-robot"></i>
+                        </div>
+                        <div class="bg-brand-cream p-4 rounded-2xl rounded-tl-none border border-brand-beige text-xs text-brand-dark leading-relaxed shadow-sm">
+                            ${replyText.replace(/\n/g, '<br>')}
+                        </div>
+                    </div>
+                `;
+            } catch (err) {
+                document.getElementById(loadingId).remove();
+                chatContainer.innerHTML += `
+                    <div class="flex items-start gap-3">
+                        <div class="w-8 h-8 rounded-full bg-red-600 flex items-center justify-center text-white text-xs shrink-0 mt-1">
+                            <i class="fa-solid fa-circle-exclamation"></i>
+                        </div>
+                        <div class="bg-red-50 p-4 rounded-2xl text-xs text-red-700">
+                            Gagal menghubungi Baker AI. Silakan periksa jaringan Anda.
+                        </div>
+                    </div>
+                `;
+            } finally {
+                btnSend.disabled = false;
+                chatContainer.scrollTop = chatContainer.scrollHeight;
+            }
+        }
+
+        // Render Products Grid
+        function renderProducts() {
+            const grid = document.getElementById('products-grid');
+            grid.innerHTML = PRODUCTS_DATA.map(product => `
+                <div class="bg-brand-cream rounded-3xl overflow-hidden border border-brand-beige/80 shadow-md hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+                    <div class="relative overflow-hidden aspect-[4/3]">
+                        <img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-4 left-4 bg-brand-cream/90 backdrop-blur-sm text-brand-dark text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full border border-brand-beige">
+                            ${product.category}
+                        </span>
+                    </div>
+
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-serif text-2xl font-bold text-brand-dark group-hover:text-brand-terracotta transition-colors">${product.name}</h3>
+                            <p class="text-xs text-brand-dark/70 mt-2 leading-relaxed">${product.description}</p>
+                        </div>
+
+                        <div class="mt-6 pt-4 border-t border-brand-beige/60 flex items-center justify-between">
+                            <div>
+                                <span class="text-[10px] uppercase text-brand-accent tracking-wider font-semibold">Harga</span>
+                                <p class="font-serif text-xl font-bold text-brand-dark">${formatRupiah(product.price)} <span class="text-xs font-normal text-brand-dark/60">/${product.unit}</span></p>
+                            </div>
+
+                            <button onclick="addToCart('${product.id}')" class="px-4 py-2.5 rounded-full bg-brand-dark text-white text-xs font-semibold uppercase tracking-wider hover:bg-brand-terracotta transition-all duration-300 flex items-center gap-2 shadow-sm">
+                                <i class="fa-solid fa-plus text-xs"></i>
+                                <span>Tambah</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Cart Drawer Handlers
+        function toggleCartDrawer() {
+            const drawer = document.getElementById('cart-drawer');
+            const overlay = document.getElementById('cart-drawer-overlay');
+            const isOpen = !drawer.classList.contains('translate-x-full');
+
+            if (isOpen) {
+                drawer.classList.add('translate-x-full');
+                overlay.classList.add('opacity-0', 'pointer-events-none');
+                overlay.classList.remove('opacity-100');
+            } else {
+                drawer.classList.remove('translate-x-full');
+                overlay.classList.remove('opacity-0', 'pointer-events-none');
+                overlay.classList.add('opacity-100');
+            }
+        }
+
+        // Add Product to Cart
+        function addToCart(productId) {
+            const product = PRODUCTS_DATA.find(p => p.id === productId);
+            if (!product) return;
+
+            const existingItem = cart.find(item => item.id === productId);
+            if (existingItem) {
+                existingItem.qty += 1;
+            } else {
+                cart.push({ ...product, qty: 1 });
+            }
+
+            updateCartUI();
+            
+            const drawer = document.getElementById('cart-drawer');
+            if (drawer.classList.contains('translate-x-full')) {
+                toggleCartDrawer();
+            }
+        }
+
+        // Change Quantity
+        function updateQuantity(productId, delta) {
+            const item = cart.find(i => i.id === productId);
+            if (!item) return;
+
+            item.qty += delta;
+            if (item.qty <= 0) {
+                cart = cart.filter(i => i.id !== productId);
+            }
+            updateCartUI();
+        }
+
+        // Update Cart UI
+        function updateCartUI() {
+            const badge = document.getElementById('cart-badge-count');
+            const container = document.getElementById('cart-items-container');
+            const totalPriceEl = document.getElementById('cart-total-price');
+
+            const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
+            const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+
+            badge.innerText = totalItems;
+            if (totalItems > 0) {
+                badge.classList.remove('scale-0');
+            } else {
+                badge.classList.add('scale-0');
+            }
+
+            if (cart.length === 0) {
+                container.innerHTML = `
+                    <div class="h-64 flex flex-col items-center justify-center text-center p-6 text-brand-dark/50 space-y-3">
+                        <i class="fa-solid fa-basket-shopping text-4xl text-brand-beige"></i>
+                        <p class="text-sm font-serif">Keranjang belanja Anda masih kosong.</p>
+                        <a href="#menu" onclick="toggleCartDrawer()" class="text-xs uppercase tracking-wider font-bold text-brand-terracotta hover:underline">Lihat Menu Roti</a>
+                    </div>
+                `;
+            } else {
+                container.innerHTML = cart.map(item => `
+                    <div class="flex items-center gap-4 bg-brand-cream p-3 rounded-2xl border border-brand-beige shadow-sm">
+                        <img src="${item.image}" alt="${item.name}" class="w-16 h-16 rounded-xl object-cover">
+                        <div class="flex-1">
+                            <h4 class="font-serif font-bold text-sm text-brand-dark">${item.name}</h4>
+                            <p class="text-xs text-brand-accent">${formatRupiah(item.price)}</p>
+                            
+                            <div class="flex items-center gap-3 mt-2">
+                                <div class="flex items-center border border-brand-beige rounded-full bg-brand-warm">
+                                    <button onclick="updateQuantity('${item.id}', -1)" class="w-6 h-6 rounded-full flex items-center justify-center text-xs text-brand-dark hover:bg-brand-beige">-</button>
+                                    <span class="text-xs font-bold px-2">${item.qty}</span>
+                                    <button onclick="updateQuantity('${item.id}', 1)" class="w-6 h-6 rounded-full flex items-center justify-center text-xs text-brand-dark hover:bg-brand-beige">+</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <p class="font-serif font-bold text-sm text-brand-dark">${formatRupiah(item.price * item.qty)}</p>
+                            <button onclick="updateQuantity('${item.id}', -${item.qty})" class="text-[10px] text-red-500 hover:underline mt-2">Hapus</button>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            totalPriceEl.innerText = formatRupiah(totalPrice);
+        }
+
+        // WhatsApp Checkout
+        function checkoutToWhatsApp() {
+            if (cart.length === 0) {
+                alert("Keranjang belanja Anda masih kosong. Silakan pilih roti terlebih dahulu.");
+                return;
+            }
+
+            let message = "Halo Po&Co Bakery, saya ingin memesan roti homemade fresh:\n\n";
+            let grandTotal = 0;
+
+            cart.forEach((item, index) => {
+                const subtotal = item.price * item.qty;
+                grandTotal += subtotal;
+                message += `${index + 1}. *${item.name}*\n   ${item.qty} x ${formatRupiah(item.price)} = ${formatRupiah(subtotal)}\n`;
+            });
+
+            message += `\n----------------------------------\n`;
+            message += `*TOTAL PEMBAYARAN:* ${formatRupiah(grandTotal)}\n----------------------------------\n\n`;
+            message += `Mohon konfirmasi ketersediaan stok & petunjuk pembayarannya. Terima kasih!`;
+
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappURL = `https://wa.me/${ADMIN_WHATSAPP_NUMBER}?text=${encodedMessage}`;
+
+            window.open(whatsappURL, '_blank');
+        }
+
+        // Initialize Page
+        window.onload = function() {
+            renderProducts();
+            updateCartUI();
+        };
+    </script>
+</body>
+</html>
+```
+
+---
+
+### Cara Menambahkan/Mengedit Menu Sendiri
+
+Untuk menambahkan menu baru di kemudian hari, Anda cukup membuka bagian `<script>` di bagian bawah file dan cari variabel `PRODUCTS_DATA`. Tambahkan objek baru dengan format seperti berikut:
+
+```javascript
+{
+    id: 'p10', // Pastikan ID unik (p10, p11, dst)
+    name: 'Nama Roti Anda',
+    category: 'Kategori (contoh: Sweet Bread / Pastry)',
+    price: 25000, // Harga dalam angka tanpa titik/koma
+    unit: 'Pcs', // Unit (Pcs/Loaf/Box)
+    image: 'https://url-gambar-roti-anda.jpg', // Link URL gambar roti
+    description: 'Deskripsi singkat mengenai rasa dan keunikan roti.'
+}
+```
+
+Setiap kali Anda menambah, mengubah, atau menghapus item dalam array `PRODUCTS_DATA`, kartu menu di halaman web dan sistem rekomendasi **Baker AI** akan secara otomatis diperbarui!
